@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.mailgun.org',
+	'host' => getenv('SMTP_HOST'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'postmaster@dogearedpress.ca',
+	'username' => getenv('SMTP_USERNAME'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => '5enbx5b3xas2',
+	'password' => getenv('SMTP_PASSWORD'),
 
 	/*
 	|--------------------------------------------------------------------------

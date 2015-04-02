@@ -24,11 +24,14 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-$env = $app->detectEnvironment(array(
+Dotenv::load(__DIR__ .'/../');
 
-    'local'   => array('homestead'),
-    'staging' => array('epsilon.verilion.com')
-));
+$env = $app->detectEnvironment(
+    function()
+    {
+        return getenv('APP_ENV');
+    }
+);
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +61,7 @@ $framework = $app['path.base'].'/vendor/laravel/framework/src';
 
 require $framework.'/Illuminate/Foundation/start.php';
 
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application
@@ -68,8 +72,5 @@ require $framework.'/Illuminate/Foundation/start.php';
 | from the actual running of the application and sending responses.
 |
 */
-
-Dotenv::load(base_path());
-Dotenv::required(array('DB_HOST', 'DB_DATABASE', 'DB_USERNAME', 'DB_PASSWORD'));
 
 return $app;

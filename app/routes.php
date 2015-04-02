@@ -14,6 +14,8 @@ Route::get('/redheadcleanup', function(){
 
 Route::post('/redheadcleanup', function(){
 
+    //dd(Config::get('app.contact_email'));
+
     // build email
     $user = array(
         'email'=>Input::get('email'),

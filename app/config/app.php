@@ -186,8 +186,10 @@ return array(
 
     'flickrid'        => '117792987@N06',
 
-    'contact_email'   => 'kshannonm@canaportlng.com',
+    //'contact_email'   => 'kshannonm@canaportlng.com',
+    'contact_email'   => getenv('CONTACT_EMAIL'),
 
-    'contact_name'    => 'Kate Shannon',
+    //'contact_name'    => 'Kate Shannon',
+    'contact_name'    => getenv('CONTACT_NAME'),
 
 );
