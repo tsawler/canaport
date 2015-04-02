@@ -1,0 +1,7 @@
+/public/img
+/public/userimages
+vendor/*
+.idea
+_ide_helper.php
+composer.lock
+.idea/workspace.xml
