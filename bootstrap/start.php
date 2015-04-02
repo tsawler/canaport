@@ -69,4 +69,7 @@ require $framework.'/Illuminate/Foundation/start.php';
 |
 */
 
+Dotenv::load(base_path());
+Dotenv::required(array('DB_HOST', 'DB_DATABASE', 'DB_USERNAME', 'DB_PASSWORD'));
+
 return $app;

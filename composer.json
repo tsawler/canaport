@@ -9,7 +9,8 @@
     "pda/pheanstalk": "dev-master",
     "thujohn/rss": "~1.0",
     "thujohn/twitter": "~2.0",
-    "iron-io/iron_mq": "~1.5"
+    "iron-io/iron_mq": "~1.5",
+    "vlucas/phpdotenv": "~1.1@dev"
   },
   "autoload": {
     "classmap": [
