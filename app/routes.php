@@ -1,6 +1,14 @@
 <?php
 
 /**
+ * Push queues
+ */
+Route::post('/queue/canaport', function(){
+    return Queue::marshal();
+});
+
+
+/**
  * Home Page
  */
 Route::any('/','PageController@showHome');
