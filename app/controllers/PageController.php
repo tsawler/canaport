@@ -224,6 +224,4 @@ class PageController extends BaseController {
 			->with('active',$active)
 			->with('page_id', $page_id);
 	}
-
-
 }
