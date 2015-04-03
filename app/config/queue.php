@@ -15,8 +15,7 @@ return array(
 	|
 	*/
 
-	//'default' => getenv('QUEUE'),
-	'default' => 'iron',
+	'default' => getenv('QUEUE'),
 
 	/*
 	|--------------------------------------------------------------------------
