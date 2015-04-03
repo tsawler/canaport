@@ -8,29 +8,6 @@ Route::post('/queue/canaport', function ()
     return Queue::marshal();
 });
 
-Route::get('/testqueue', function ()
-{
-
-    $user_array = array(
-        'email' => 'trevor.sawler@gmail.com',
-        'name'  => 'Trevor'
-    );
-
-    $data = array(
-        'users_name'  => $user_array['name'],
-        'the_message' => 'Hello, world',
-        'email'       => 'some email'
-    );
-
-    Mail::queue('emails.cleanup_email', $data, function ($message) use ($user_array)
-    {
-        $message->from('donotreply@canaportlng.com', 'Do not reply');
-        $message->to('trevor.sawler@gmail.com')->subject('Test of email');
-    });
-
-    return "sent";
-});
-
 
 /**
  * Home Page
@@ -38,6 +15,10 @@ Route::get('/testqueue', function ()
 Route::any('/', 'PageController@showHome');
 Route::any('/home', 'PageController@showHome');
 
+
+/**
+ * Redhead cleanup form
+ */
 Route::get('/redheadcleanup', function ()
 {
     return View::make('redhead-register');
@@ -46,18 +27,18 @@ Route::get('/redheadcleanup', function ()
 Route::post('/redheadcleanup', function ()
 {
 
-    $user = array(
+    $user_array = array(
         'email' => Input::get('email'),
         'name'  => Input::get('name')
     );
 
     $data = array(
-        'users_name'  => $user['name'],
-        'the_message' => Input::get('message'),
+        'users_name'  => $user_array['name'],
+        'the_message' => '',
         'email'       => Input::get('email')
     );
 
-    Mail::later(5, 'emails.cleanup_email', $data, function ($message) use ($user)
+    Mail::later(5, 'emails.cleanup_email', $data, function ($message) use ($user_array)
     {
         $message->from('donotreply@canaportlng.com', 'Do not reply');
         $message->to(Config::get('app.contact_email'))->subject('Redhead Cleanup Registration');
@@ -73,7 +54,6 @@ Route::get('/emailconsent', 'EmailConsentController@getShowform');
 Route::post('/emailconsent', 'EmailConsentController@postShowform');
 
 /**
- *
  * Mailing list routes
  */
 Route::get('/Signup+For+Updates', 'MailRecipientController@getJoinList');
@@ -90,8 +70,7 @@ Route::get('/twitter', function ()
 
 
 /**
- *
- * Proces routes
+ * Process routes
  */
 Route::get('/process', function ()
 {
@@ -100,21 +79,19 @@ Route::get('/process', function ()
 
 
 /**
- * Contact Us
+ * Contact Us routes
  */
 Route::get('/Contact+Us', 'ContactController@getContact');
 Route::post('/Contact+Us', 'ContactController@postContact');
 
 
 /**
- *
  * Minutes routes
  */
 Route::get('/minutes', 'MinutesController@showMinutes');
 
 
 /**
- *
  * newsletter routes
  */
 Route::get('/connections', 'NewsletterController@getNewsletters');
@@ -145,6 +122,7 @@ Route::post('/search', 'SearchController@performSearch');
  */
 Route::get('/Community+Involvement', 'InvolvementController@showPage');
 Route::post('/involvement/edit', 'InvolvementController@editInvolvement');
+
 
 /**
  * FAQs
@@ -210,4 +188,3 @@ Route::get('/Apply+For+Sponsorship', 'PageController@getApplyforsponorship');
 Route::post('/Apply+For+Sponsorship', 'PageController@postApplyforsponorship');
 Route::get('{pagename?}', 'PageController@showPage');
 Route::post('/page/edit', 'PageController@editPage');
-

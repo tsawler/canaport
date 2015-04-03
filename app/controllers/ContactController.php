@@ -44,20 +44,20 @@ class ContactController extends BaseController {
 	public function postContact(){
 		    
 	    // build email
-		$user = array(
+		$user_data = array(
 			'email'=>Input::get('email'),
 			'name'=>Input::get('name')
 		);
 
 		// the data that will be passed into the mail view blade template
 		$data = array(
-			'users_name'  => $user['name'],
+			'users_name'  => $user_data['name'],
 			'the_message'=>Input::get('message'),
 			'email'=>Input::get('email')
 		);
 		
 		// use Mail::send function to send email passing the data and using the $user variable in the closure
-		Mail::later(5,'emails.contact_email', $data, function($message) use ($user) {
+		Mail::queue('emails.contact_email', $data, function($message) use ($user_data) {
 				$message->from('donotreply@canaportlng.com', 'Do not reply');
 				$message->to(Config::get('app.contact_email'))->subject('Contact form from website');
 		});

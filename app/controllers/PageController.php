@@ -154,7 +154,7 @@ class PageController extends BaseController {
 		$contact_phone = Input::get('contact_phone');
 		
 		// build email
-		$user = array(
+        $user_data = array(
 			'email' => Config::get('app.contact_email'),
 			'first_name' => Config::get('app.contact_name')
 		);
@@ -173,9 +173,9 @@ class PageController extends BaseController {
 		);
 
 		// use Mail::send function to send email passing the data and using the $user variable in the closure
-		Mail::later(5,'emails.sponsorship', $data, function($message) use ($user) {
+		Mail::queue('emails.sponsorship', $data, function($message) use ($user_data) {
 			$message->from('donotreply@canaportlng.com', 'Do not reply');
-			$message->to($user['email'], $user['first_name'])->subject('Sponsorship request from website');
+			$message->to($user_data['email'], $user_data['first_name'])->subject('Sponsorship request from website');
 		});
 
 		return Redirect::to('/Sponsorship+Request+Confirmation');

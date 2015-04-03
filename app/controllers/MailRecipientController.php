@@ -52,7 +52,7 @@ class MailRecipientController extends BaseController {
 	public function postJoinList(){
 	
 		 // build email
-		$user = array(
+        $user_data = array(
 			'email'=>Input::get('email'),
 			'name'=>Input::get('name')
 		);
@@ -63,7 +63,7 @@ class MailRecipientController extends BaseController {
 		);
 		
 		// use Mail::send function to send email passing the data and using the $user variable in the closure
-		Mail::later(5,'emails.joinlist_email', $data, function($message) use ($user) {
+		Mail::queue('emails.joinlist_email', $data, function($message) use ($user_data) {
 				$message->from('donotreply@canaportlng.com', 'Do not reply');
 				$message->to(Config::get('app.contact_email'))->subject('Contact form from website');
 		});
