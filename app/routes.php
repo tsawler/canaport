@@ -6,34 +6,26 @@
 Route::any('/','PageController@showHome');
 Route::any('/home','PageController@showHome');
 
-//Route::any('/fixnews', 'FixNewsController@fix');
-
 Route::get('/redheadcleanup', function(){
     return View::make('redhead-register');
 });
 
 Route::post('/redheadcleanup', function(){
 
-    //dd(Config::get('app.contact_email'));
-
-    // build email
     $user = array(
         'email'=>Input::get('email'),
         'name'=>Input::get('name')
     );
 
-    // the data that will be passed into the mail view blade template
     $data = array(
         'users_name'  => $user['name'],
         'the_message'=>Input::get('message'),
         'email'=>Input::get('email')
     );
 
-    // use Mail::send function to send email passing the data and using the $user variable in the closure
     Mail::later(5,'emails.cleanup_email', $data, function($message) use ($user) {
         $message->from('donotreply@canaportlng.com', 'Do not reply');
         $message->to(Config::get('app.contact_email'))->subject('Redhead Cleanup Registration');
-        //$message->to('trevor.sawler@gmail.com')->subject('Redhead Cleanup Registration');
     });
 
     return Redirect::to('/registration+confirmed');
