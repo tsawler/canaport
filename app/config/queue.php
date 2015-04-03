@@ -15,7 +15,7 @@ return array(
 	|
 	*/
 
-	'default' => 'sync',
+	'default' => getenv('QUEUE'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -50,9 +50,11 @@ return array(
 
 		'iron' => array(
 			'driver'  => 'iron',
-			'project' => 'your-project-id',
-			'token'   => 'your-token',
-			'queue'   => 'your-queue-name',
+            'host'    => getenv('IRON_HOST'),
+            'token'   => getenv('IRON_TOKEN'),
+            'project' => getenv('IRON_PROJECT'),
+			'queue'   => 'canaport',
+            'encrypt' => true,
 		),
 
 		'redis' => array(
