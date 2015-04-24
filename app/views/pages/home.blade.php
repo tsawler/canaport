@@ -102,7 +102,7 @@ Canaport LNG | Clean. Safe. Energy.
 @endif
 
 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 item animate_afc d2" style="vertical-align: top; margin-top: -46px;">
-   <div class="portfolio-item" style="vertical-align: top;>
+   <div class="portfolio-item" style="vertical-align: top;">
       <a href="{{ $splash_image }}" class="portfolio-item-link" data-rel="prettyPhoto" >
       <span class="portfolio-item-hover"></span>
       <span class="fullscreen"><i class="icon-search"></i></span><img src="{{ $splash_image }}" alt=" "/>
