@@ -144,6 +144,7 @@
 						<li><a href="/admin/addminutes">Add CCELC minutes</a></li>
 						<li><a href="/admin/allinvolvement">Manage Community Involvement</a></li>
 						<li><a href="/admin/splash">Manage Splash Text/Image</a></li>
+						<li><a href="/admin/cleanup/cleanup">Manage Cleanup Pages</a></li>
 						<li><a href="/users/logout">Logout</a></li>
 					</ul>
 				</li>

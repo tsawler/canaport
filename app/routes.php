@@ -21,7 +21,19 @@ Route::any('/home', 'PageController@showHome');
  */
 Route::get('/redheadcleanup', function ()
 {
-    return View::make('redhead-register');
+    $page = Cleanup::find(2);
+    return View::make('redhead-register')
+        ->with('page', $page);
+});
+
+/**
+ * Marsh Creek cleanup form
+ */
+Route::get('/marshcreek', function ()
+{
+    $page = Cleanup::find(1);
+    return View::make('marsh-creek-cleanup')
+        ->with('page', $page);
 });
 
 Route::post('/redheadcleanup', function ()
@@ -42,6 +54,29 @@ Route::post('/redheadcleanup', function ()
     {
         $message->from('donotreply@canaportlng.com', 'Do not reply');
         $message->to(Config::get('app.contact_email'))->subject('Redhead Cleanup Registration');
+    });
+
+    return Redirect::to('/registration+confirmed');
+});
+
+Route::post('/marshcreek', function ()
+{
+
+    $user_array = array(
+        'email' => Input::get('email'),
+        'name'  => Input::get('name')
+    );
+
+    $data = array(
+        'users_name'  => $user_array['name'],
+        'the_message' => '',
+        'email'       => Input::get('email')
+    );
+
+    Mail::later(5, 'emails.marsh-creek-cleanup-email', $data, function ($message) use ($user_array)
+    {
+        $message->from('donotreply@canaportlng.com', 'Do not reply');
+        $message->to(Config::get('app.contact_email'))->subject('Marsh Creek Cleanup Registration');
     });
 
     return Redirect::to('/registration+confirmed');
@@ -178,6 +213,7 @@ Route::controller('/menu', 'MenuController');
 /**
  * Admin Routes
  */
+Route::controller('/admin/cleanup', 'CleanupController');
 Route::controller('/admin', 'AdminController');
 
 
