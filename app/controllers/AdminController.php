@@ -1151,27 +1151,37 @@ class AdminController extends BaseController {
 	 */
 	public function postSplash()
 	{
-		// get the file
-		$file = Input::file('img');
-		$destinationPath = base_path() . '/public/img/';
-		$filename = str_random(10) . "_" . $file->getClientOriginalName();
-		
-		$upload_success = Input::file('img')->move($destinationPath, $filename);
-		
-		if ($upload_success) {
-			// get file contents
-			$content = file_get_contents($destinationPath.$filename);
-			
-			// save the data
-			$submission = Splash::find(1);
-			$submission->image = "/img/".$filename;
-			$submission->text = Input::get('text');
-			$submission->save();
-			return Redirect::to('admin/splash')->with('message','Image/text uploaded successfully');
-			
-		} else {
-			return Redirect::to('users/dashboard')->with('message', 'There was an error with your submission!');
-		}
+
+        if (Input::hasFile('img')) {
+            // get the file
+            $file = Input::file('img');
+            $destinationPath = base_path() . '/public/img/';
+            $filename = str_random(10) . "_" . $file->getClientOriginalName();
+
+            $upload_success = Input::file('img')->move($destinationPath, $filename);
+
+            if ($upload_success) {
+                // get file contents
+                $content = file_get_contents($destinationPath . $filename);
+
+                // save the data
+                $submission = Splash::find(1);
+                $submission->image = "/img/" . $filename;
+                $submission->text = Input::get('text');
+                $submission->save();
+
+                return Redirect::to('admin/splash')->with('message', 'Image/text uploaded successfully');
+
+            } else {
+                return Redirect::to('users/dashboard')->with('message', 'There was an error with your submission!');
+            }
+        } else
+        {
+            $submission = Splash::find(1);
+            $submission->text = Input::get('text');
+            $submission->save();
+            return Redirect::to('admin/splash')->with('message', 'Changes saved');
+        }
 	}
 	
 	
