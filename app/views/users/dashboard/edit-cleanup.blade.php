@@ -82,6 +82,8 @@
         </div>
         <div>&nbsp;</div>
 
+        {{ Form::hidden('id', $page->id) }}
+
         {{ Form::close() }}
     </div>
     <div>&nbsp;</div>

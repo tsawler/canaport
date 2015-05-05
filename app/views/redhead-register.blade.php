@@ -10,20 +10,11 @@
 
 @section('content')
 
-    <h1>Red Head Community Spring Clean-up</h1>
+    <h1>{{ $page->title }}</h1>
 
-    <img src="/redhead-banner.jpg" style="width: 100%; height: auto" alt="cleanup">
-    <p>&nbsp;</p>
-    <h2>Show your community pride & REGISTER for the
-    Red Head Community Spring clean-up</h2>
+    <img src="/img/{{ $page->image }}" style="width: 100%; height: auto" alt="cleanup">
 
-    <p><strng>Saturday, May 2nd, 2015</strng></p>
-    <ul>
-        <li>Registration at Ocean Drive Park: 8:30 am</li>
-        <li>Clean Up Begins: 9:00 am</li>
-        <li>Community BBQ at Ocean Drive Park: 12:00 noon</li>
-        <li>Be sure to register by APRIL 29th! RAIN or SHINE!</li>
-    </ul>
+    {{ $page->above }}
 
     <p>&nbsp;</p>
 
@@ -71,15 +62,7 @@
 
     {{ Form::close() }}
 
-    <p>&nbsp;</p>
-
-    <p><strong>With the arrival of Spring, we can all pitch in and clean up the Red Head Road</strong>. Gather your family, friends and neighbours to help make Red Head look even better by cleaning up the areas outside your homes and along the road. <strong>Working together we can keep Red Head clean and green!</strong></p>
-
-    <p>This spring clean-up will involve the coordinated effort of Canaport LNG, its employees and the residents of the Red Head community. We will provide garbage pickup for the entire length of the Red Head Road and we encourage all residents to take an active role in this community clean-up project by cleaning up their property and the surrounding areas.</p>
-
-    <p><strong>Wear old clothes and we’ll supply the gloves. We’ll celebrate everyone’s hard work afterwards with a community BBQ!</strong></p>
-
-    <p>&nbsp;</p>
+    {{ $page->below }}
 
 @stop
 
