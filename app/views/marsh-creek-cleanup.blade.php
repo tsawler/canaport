@@ -1,11 +1,11 @@
 @extends('inside')
 
 @section('browser-title')
-    Redhead Cleanup Registration: Canaport LNG | Clean. Safe. Energy.
+    Marsh Creek Cleanup Registration: Canaport LNG | Clean. Safe. Energy.
 @stop
 
 @section('title')
-    Red Head Community Spring Cleanup
+   {{ $page->title }}
 @stop
 
 @section('content')
