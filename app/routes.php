@@ -79,7 +79,7 @@ Route::post('/marshcreek', function ()
         $message->to(Config::get('app.contact_email'))->subject('Marsh Creek Cleanup Registration');
     });
 
-    return Redirect::to('Registration+Confirmed+-+Marsh+Creek+Cleanup');
+    return Redirect::to('/Registration+Confirmed+-+Marsh+Creek+Cleanup');
 });
 
 /*
