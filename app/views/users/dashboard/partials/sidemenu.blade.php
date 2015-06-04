@@ -76,6 +76,18 @@
 					@endif
 					</a>
 				</dd>
+
+                <dd>
+                    <a href="/admin/bios">
+                        @if (Request::path() == "admin/bios")
+                            <strong>
+                                @endif
+                                Manage bios
+                                @if (Request::path() == "admin/bios")
+                            </strong>
+                        @endif
+                    </a>
+                </dd>
 				<dd>&nbsp;</dd>
 				
 				<dt>Community</dt>
