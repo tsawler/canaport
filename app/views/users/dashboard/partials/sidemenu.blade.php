@@ -76,18 +76,6 @@
 					@endif
 					</a>
 				</dd>
-
-                <dd>
-                    <a href="/admin/bios">
-                        @if (Request::path() == "admin/bios")
-                            <strong>
-                                @endif
-                                Manage bios
-                                @if (Request::path() == "admin/bios")
-                            </strong>
-                        @endif
-                    </a>
-                </dd>
 				<dd>&nbsp;</dd>
 				
 				<dt>Community</dt>
@@ -117,7 +105,7 @@
 			@endif
 			
 			@if (Auth::user()->roles->contains(6))
-				<dt>Gallery</dt>
+				<dt>About</dt>
 				<dd>
 					<a href="/admin/galleryupload">
 					@if (Request::path() == "admin/galleryupload")
@@ -140,6 +128,17 @@
 					@endif
 					</a>
 				</dd>
+                    <dd>
+                        <a href="/admin/bios">
+                            @if (Request::path() == "admin/bios")
+                                <strong>
+                            @endif
+                                    Manage bios
+                            @if (Request::path() == "admin/bios")
+                                </strong>
+                            @endif
+                        </a>
+                    </dd>
 				<dd>&nbsp;</dd>
 			@endif
 			
