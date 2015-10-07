@@ -27,7 +27,7 @@ Search
 	@if ($results)
 		@foreach ($results as $result)
 			<dt><a href="{{ $result->target }}">{{ $result->the_title }}</a></dt>
-			<dd>{{ str_ireplace($searchterm,"<span style='background: yellow'>".$searchterm."</span>",$result->the_content) }} </dd>
+			<dd>{{ str_ireplace($searchterm,"<span style='background: yellow'>".$searchterm."</span>",strip_tags($result->the_content)) }} </dd>
 			<dd>&nbsp;</dd>
 		@endforeach
 	@else
