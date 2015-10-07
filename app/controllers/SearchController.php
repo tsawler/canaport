@@ -30,7 +30,7 @@ class SearchController extends BaseController {
 		$searchterm = Input::get('searchterm');
 								
 		$results = DB::select("(select id as the_id, page_title as the_title, "
-								. "concat(substring(strip_tags(page_content),1,500),'...') as the_content,  "
+								. "concat(substring(page_content,1,500),'...') as the_content,  "
 								. "concat('/',slug) as target "
 								. "from pages WHERE MATCH (page_title,page_content) AGAINST (? IN BOOLEAN MODE))"
 								. " union "
@@ -65,7 +65,7 @@ class SearchController extends BaseController {
 		$searchterm = Input::get('searchterm');
 		
 		$results = DB::select("select id as the_id, `title` as the_title, "
-								. "concat(substring(strip_tags(content),1,500),'...') as the_content, "
+								. "concat(substring(content,1,500),'...') as the_content, "
 								. "concat('/news/',slug) as target " 
 								. "from blog_posts WHERE MATCH (title,content) AGAINST (? IN BOOLEAN MODE)"
 								, array($searchterm));
