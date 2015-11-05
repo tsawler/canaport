@@ -123,6 +123,10 @@ Add News Item
 	    <div class="controls">
 		    {{ Form::submit('Save', array('class' => 'btn-normal btn-color submit'))
 		    }}
+
+			@if (($news->id != null) && ($news->id > 0))
+                <a href="#!" class="btn-normal btn-danger" onclick="confirmDelete({{ $news->id }})">Delete</a>
+            @endif
 	    </div>
 	</div>
 	
@@ -172,6 +176,15 @@ function saveDate(){
     var options = { target: '#theeditmsg', success: showResponse };
     $("#dateform").unbind('submit').ajaxSubmit(options);
     return false;
+}
+
+function confirmDelete(x){
+    bootbox.confirm("Are you sure you want to delete this item?", function(result) {
+        if (result==true)
+        {
+            window.location.href = '/admin/deletenewsitem?id=' + x;
+        }
+    });
 }
 </script>
 @stop

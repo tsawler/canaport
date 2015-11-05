@@ -210,6 +210,7 @@ Route::controller('/menu', 'MenuController');
  */
 Route::group(array('before' => 'auth'), function () {
     Route::get('/admin/bios', 'BioController@getBios');
+    Route::get('/admin/deletenewsitem', 'NewsController@getDeleteitem');
     Route::get('/admin/editbio/{id}', 'BioController@getEditBio');
     Route::post('/admin/editbio/{id}', 'BioController@postEditBio');
     Route::controller('/admin/cleanup', 'CleanupController');
