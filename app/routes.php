@@ -73,7 +73,7 @@ Route::post('/marshcreek', function () {
 
     Mail::later(5, 'emails.marsh-creek-cleanup-email', $data, function ($message) use ($user_array) {
         $message->from('donotreply@canaportlng.com', 'Do not reply');
-        $message->to(Config::get('app.contact_email'))->subject('Marsh Creek Cleanup Registration');
+        $message->to(Config::get('app.contact_email'))->to('julia.higgins@canaportlng.com')->subject('Marsh Creek Cleanup Registration');
     });
 
     return Redirect::to('/Registration+Confirmed+-+Marsh+Creek+Cleanup');
