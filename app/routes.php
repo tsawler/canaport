@@ -221,7 +221,7 @@ Route::group(array('before' => 'auth'), function () {
 /**
  * Page Routes
  */
-Route::get('/Apply+For+Sponsorship', 'PageController@getApplyforsponorship');
-Route::post('/Apply+For+Sponsorship', 'PageController@postApplyforsponorship');
+//Route::get('/Apply+For+Sponsorship', 'PageController@getApplyforsponorship');
+//Route::post('/Apply+For+Sponsorship', 'PageController@postApplyforsponorship');
 Route::get('{pagename?}', 'PageController@showPage');
 Route::post('/page/edit', 'PageController@editPage');
