@@ -257,7 +257,9 @@ Canaport LNG | Clean. Safe. Energy.
 
 @section('bottom-js')
 <script>
-$(document).ready(function () {
+/*
+	$(document).ready(function () {
+
 	// ------------ Twitter Feed Variables	------------	
 	var totaltweets = 12; //Must be a multiple of tweetshift;
     var twitterprofile = "canaportlng";
@@ -539,5 +541,6 @@ $(document).ready(function () {
     }
      
 });
+*/
          </script>
 @stop
