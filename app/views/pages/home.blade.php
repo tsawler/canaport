@@ -435,17 +435,7 @@ Canaport LNG | Clean. Safe. Energy.
 							}
 						});						
 					}
-					
-					/*$('.tweets-slider').animate({'top': '-='+currentheight+''}, 1000, function() {
-						$('#t'+currenttweet).css('top', totalheight);
-						totalheight+=tweetheight[currenttweet];
-						
-						if (currenttweet == totaltweets) {
-							currenttweet = 1;
-						} else {
-							currenttweet++;
-						}
-					});*/
+
 					//console.log(currentheight);
 				}
 			}
