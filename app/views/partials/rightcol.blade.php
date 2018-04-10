@@ -6,7 +6,7 @@ $latest = DB::table('blog_posts')->where('status','=','APPROVED')->orderby('publ
 
 
 
-<div id="twitter-feed" class="widget center-block"></div>
+{{--<div id="twitter-feed" class="widget center-block"></div>--}}
 <div>&nbsp;</div>
 <div>&nbsp;</div>
 <div>&nbsp;</div>
