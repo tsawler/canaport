@@ -112,7 +112,7 @@ Route::get('/process', function () {
  * Contact Us routes
  */
 Route::get('/Contact+Us', 'ContactController@getContact');
-Route::post('/Contact+Us', 'ContactController@postContact');
+Route::post('/contact', 'ContactController@postContact');
 
 
 /**
