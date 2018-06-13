@@ -131,14 +131,16 @@ Route::get('/connections', 'NewsletterController@getNewsletters');
  * Calendar
  */
 Route::get('/calendar', 'CalendarEventController@showEvents');
-Route::get('/calendar/addevent', 'CalendarEventController@showAddEvent');
-Route::post('/calendar/addevent', 'CalendarEventController@handleAddEvent');
-Route::get('/calendar/allevents', 'CalendarEventController@allEvents');
-Route::post('/calendar/allevents', 'CalendarEventController@postAllEvents');
-Route::get('/calendar/delete/{eventid}', 'CalendarEventController@handleDelete');
-Route::get('/calendar/editevent/{eventid}', 'CalendarEventController@editEvent');
-Route::post('/calendar/editevent/{eventid}', 'CalendarEventController@handleEditEvent');
 
+Route::group(array('before' => 'auth'), function () {
+    Route::get('/calendar/addevent', 'CalendarEventController@showAddEvent');
+    Route::post('/calendar/addevent', 'CalendarEventController@handleAddEvent');
+    Route::get('/calendar/allevents', 'CalendarEventController@allEvents');
+    Route::post('/calendar/allevents', 'CalendarEventController@postAllEvents');
+    Route::get('/calendar/delete/{eventid}', 'CalendarEventController@handleDelete');
+    Route::get('/calendar/editevent/{eventid}', 'CalendarEventController@editEvent');
+    Route::post('/calendar/editevent/{eventid}', 'CalendarEventController@handleEditEvent');
+});
 
 /**
  * Search site
